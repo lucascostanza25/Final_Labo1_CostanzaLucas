@@ -264,3 +264,32 @@ void perrito_listarRaciones(sPerrito* this)
 
 	printf("%-6d %-23s %-6.2f %-6d %-23s %-6.2f\n", idPerrito, nombrePerrito, pesoPerrito, edadPerrito, razaPerrito, comidaPerrito);
 }
+
+int perrito_laQueFiltra(void* perrito)
+{
+	int retorno=-1;
+	char auxRaza[21];
+	int auxEdad;
+	float auxRacion;
+	sPerrito* auxPerritoFiltrado=NULL;
+
+	if(perrito!=NULL)
+	{
+		perrito_getRaza(perrito, auxRaza);
+		perrito_getEdad(perrito, &auxEdad);
+		perrito_getRacion(perrito, &auxRacion);
+
+		if(strcmp(auxRaza, "Galgo")==0)
+		{
+			if(auxEdad>=10)
+			{
+				if(auxRacion<200)
+				{
+					retorno=0;
+				}
+			}
+		}
+	}
+
+	return retorno;
+}

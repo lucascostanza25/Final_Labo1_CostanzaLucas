@@ -32,5 +32,6 @@ void perrito_listarRaciones(sPerrito* this);
 // ----------------------- //
 int perrito_ordenarNombre(void* perritoUno, void* perritoDos);
 int perrito_laQueMapea(void* perrito);
+int perrito_laQueFiltra(void* perrito);
 
 #endif /* PERRITOS_H_ */

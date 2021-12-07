@@ -22,7 +22,8 @@ struct LinkedList
 
 LinkedList* ll_newLinkedList(void);
 LinkedList* ll_sublist(LinkedList* this, int from, int to);
-LinkedList* ll_close(LinkedList* this);
+LinkedList* ll_clone(LinkedList* this);
+LinkedList* ll_filter(LinkedList* this, int(*pFunc)(void*));
 Node* test_getNode(LinkedList* this, int nodeIndex);
 void* ll_get(LinkedList* this, int index);
 void* ll_pop(LinkedList* this, int index);

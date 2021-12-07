@@ -20,7 +20,9 @@ int main(void) {
 	setbuf(stdout, NULL);
 	int menu;
 	int flagArchivo=0;
+	int flagRaciones=0;
 	LinkedList* pArrayListPerritos=ll_newLinkedList();
+	LinkedList* pArrayListPerritosFiltrada;
 
 	do
 	{
@@ -66,6 +68,7 @@ int main(void) {
 					if(ll_map(pArrayListPerritos, perrito_laQueMapea)!=-1)
 					{
 						printf("Se calculo correctamente lar porciones de comida!\n");
+						flagRaciones=1;
 					}
 					else
 					{
@@ -80,14 +83,35 @@ int main(void) {
 			break;
 
 			case 4:
-				if(flagArchivo==1)
+				if(flagArchivo==1 && flagRaciones==1)
 				{
 					controller_listPerritoPorciones(pArrayListPerritos);
 				}
 				else
 				{
-					printf("Primero cargue el archivo de texto!\n");
+					printf("Primero cargue el archivo de texto o calcule las raciones de comida!\n");
 				}
+				system("pause");
+			break;
+
+			case 5:
+				if(flagArchivo==1 && flagRaciones==1)
+				{
+					pArrayListPerritosFiltrada=ll_filter(pArrayListPerritos, perrito_laQueFiltra);
+					if(pArrayListPerritosFiltrada!=NULL)
+					{
+						printf("Se filtro exitosamente a los perritos!\n");
+					}
+				}
+				else
+				{
+					printf("Primero cargue el archivo de texto o calcule las raciones de comida!\n");
+				}
+				system("pause");
+			break;
+
+			case 6:
+				controller_listPerritoPorciones(pArrayListPerritosFiltrada); //Funcion usada de prueba para testear
 				system("pause");
 			break;
 
