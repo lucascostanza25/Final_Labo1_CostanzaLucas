@@ -18,4 +18,12 @@ int controller_listPerritoPorciones(LinkedList* pArrayListPerritos);
 
 int controller_saveGalgosFlaquitosAsText(char* path, LinkedList* pArrayListPerritosFiltrados);
 
+// --------------- //
+
+int controller_loadHogaresFromText(char* path, LinkedList* pArrayListHogares);
+
+int controller_loadPerritosHogaresFromText(char* path, LinkedList* pArrayListPerritosHogares);
+
+int controller_listPerritosConHogares(LinkedList* pArrayListHogares, LinkedList* pArrayListPerritosHogares);
+
 #endif /* CONTROLLER_H_ */

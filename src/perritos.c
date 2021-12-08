@@ -28,7 +28,7 @@ sPerrito* perrito_NewParametros(char* idPerrito, char* nombrePerrito, char* peso
 	{
 		auxPerrito->idPerrito=atoi(idPerrito);
 		strcpy(auxPerrito->nombrePerrito, nombrePerrito);
-		auxPerrito->pesoPerrito=atoi(pesoPerrito);
+		auxPerrito->pesoPerrito=atof(pesoPerrito);
 		auxPerrito->edadPerrito=atoi(edadPerrito);
 		strcpy(auxPerrito->razaPerrito, razaPerrito);
 	}
@@ -62,7 +62,7 @@ int perrito_getId(sPerrito* this, int* idPerrito)
 
 	if(this!=NULL)
 	{
-		*idPerrito=this->edadPerrito;
+		*idPerrito=this->idPerrito;
 		retorno=0;
 	}
 
@@ -271,7 +271,6 @@ int perrito_laQueFiltra(void* perrito)
 	char auxRaza[21];
 	int auxEdad;
 	float auxRacion;
-	sPerrito* auxPerritoFiltrado=NULL;
 
 	if(perrito!=NULL)
 	{
@@ -281,7 +280,7 @@ int perrito_laQueFiltra(void* perrito)
 
 		if(strcmp(auxRaza, "Galgo")==0)
 		{
-			if(auxEdad>=10)
+			if(auxEdad>10)
 			{
 				if(auxRacion<200)
 				{

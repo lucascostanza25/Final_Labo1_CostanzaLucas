@@ -22,7 +22,9 @@ int main(void) {
 	int flagArchivo=0;
 	int flagRaciones=0;
 	LinkedList* pArrayListPerritos=ll_newLinkedList();
-	LinkedList* pArrayListPerritosFiltrados;
+	LinkedList* pArrayListPerritosFiltrados=NULL;
+	LinkedList* pArrayListPerritosHogares=ll_newLinkedList();
+	LinkedList* pArrayListHogares=ll_newLinkedList();
 
 	do
 	{
@@ -33,8 +35,9 @@ int main(void) {
 				"4.Listar perritos con su racion de comida\n"
 				"5.Filtrar galgos flaquitos\n"
 				"6.Guardar galgos flaquitos (formato texto)\n"
+				"7.Cargar archivos de hogares y perritos con hogares\n"
 				"0.Salir\n"
-				"\nSeleccione una opcion: ", "Error, opcion incorrecta\n", 0, 7, 4);
+				"\nSeleccione una opcion: ", "Error, opcion incorrecta\n", 0, 8, 4);
 		system("cls");
 		switch(menu)
 		{
@@ -104,6 +107,10 @@ int main(void) {
 					{
 						printf("Se filtro exitosamente a los perritos!\n");
 					}
+					else
+					{
+						printf("No se pudo filtrar a los perritos!\n");
+					}
 				}
 				else
 				{
@@ -128,6 +135,19 @@ int main(void) {
 				{
 					printf("Primero cargue el archivo de texto y calcule las raciones de comida!\n");
 				}
+				system("pause");
+			break;
+
+			case 7:
+				if(controller_loadHogaresFromText("../hogares.csv", pArrayListHogares)!=-1 && controller_loadPerritosHogaresFromText("../perritosConHogar.csv", pArrayListPerritosHogares)!=-1)
+				{
+					printf("Archivos cargados con exito!\n");
+				}
+				system("pause");
+			break;
+
+			case 8:
+				controller_listPerritosConHogares(pArrayListHogares, pArrayListPerritosHogares);
 				system("pause");
 			break;
 
