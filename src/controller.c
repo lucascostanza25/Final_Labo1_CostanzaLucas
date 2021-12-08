@@ -84,3 +84,29 @@ int controller_listPerritoPorciones(LinkedList* pArrayListPerritos)
 
 	return retorno;
 }
+
+int controller_saveGalgosFlaquitosAsText(char* path, LinkedList* pArrayListPerritosFiltrados)
+{
+	int retorno=-1;
+	int i;
+	FILE* pFileEscritura;
+	sPerrito* perritoGuardado;
+
+	if(path!=NULL && pArrayListPerritosFiltrados!=NULL)
+	{
+		pFileEscritura=fopen(path, "w");
+		if(pFileEscritura!=NULL)
+		{
+			fprintf(pFileEscritura, "id, nombre, peso, edad, raza, racion\n");
+			for(i=0; i<ll_len(pArrayListPerritosFiltrados); i++)
+			{
+				perritoGuardado=ll_get(pArrayListPerritosFiltrados, i);
+				fprintf(pFileEscritura, "%d, %s, %f, %d, %s, %f\n", perritoGuardado->idPerrito, perritoGuardado->nombrePerrito, perritoGuardado->pesoPerrito, perritoGuardado->edadPerrito, perritoGuardado->razaPerrito, perritoGuardado->racionComida);
+			}
+			retorno=0;
+			fclose(pFileEscritura);
+		}
+	}
+
+	return retorno;
+}

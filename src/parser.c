@@ -31,7 +31,7 @@ int parser_PerritoFromText(FILE* pFile, LinkedList* pArrayListPerritos)
 	return retorno;
 }
 
-int parser_PerritoFromBinary(FILE* pFile, LinkedList* pArrayListPerrito)
+int parser_PerritoFromBinary(FILE* pFile, LinkedList* pArrayListPerritos)
 {
 	int retorno=-1;
 	sPerrito* auxPerrito;
@@ -43,7 +43,7 @@ int parser_PerritoFromBinary(FILE* pFile, LinkedList* pArrayListPerrito)
 			auxPerrito=perrito_New();
 			if(fread(auxPerrito, sizeof(sPerrito), 1, pFile)!=0)
 			{
-				ll_add(pArrayListPerrito, auxPerrito);
+				ll_add(pArrayListPerritos, auxPerrito);
 				retorno=0;
 			}
 		}

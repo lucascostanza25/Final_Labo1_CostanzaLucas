@@ -22,7 +22,7 @@ int main(void) {
 	int flagArchivo=0;
 	int flagRaciones=0;
 	LinkedList* pArrayListPerritos=ll_newLinkedList();
-	LinkedList* pArrayListPerritosFiltrada;
+	LinkedList* pArrayListPerritosFiltrados;
 
 	do
 	{
@@ -31,6 +31,8 @@ int main(void) {
 				"2.Informar y ordenar\n"
 				"3.Calcular porciones de comida\n"
 				"4.Listar perritos con su racion de comida\n"
+				"5.Filtrar galgos flaquitos\n"
+				"6.Guardar galgos flaquitos (formato texto)\n"
 				"0.Salir\n"
 				"\nSeleccione una opcion: ", "Error, opcion incorrecta\n", 0, 7, 4);
 		system("cls");
@@ -89,7 +91,7 @@ int main(void) {
 				}
 				else
 				{
-					printf("Primero cargue el archivo de texto o calcule las raciones de comida!\n");
+					printf("Primero cargue el archivo de texto y calcule las raciones de comida!\n");
 				}
 				system("pause");
 			break;
@@ -97,21 +99,35 @@ int main(void) {
 			case 5:
 				if(flagArchivo==1 && flagRaciones==1)
 				{
-					pArrayListPerritosFiltrada=ll_filter(pArrayListPerritos, perrito_laQueFiltra);
-					if(pArrayListPerritosFiltrada!=NULL)
+					pArrayListPerritosFiltrados=ll_filter(pArrayListPerritos, perrito_laQueFiltra);
+					if(pArrayListPerritosFiltrados!=NULL)
 					{
 						printf("Se filtro exitosamente a los perritos!\n");
 					}
 				}
 				else
 				{
-					printf("Primero cargue el archivo de texto o calcule las raciones de comida!\n");
+					printf("Primero cargue el archivo de texto y calcule las raciones de comida!\n");
 				}
 				system("pause");
 			break;
 
 			case 6:
-				controller_listPerritoPorciones(pArrayListPerritosFiltrada); //Funcion usada de prueba para testear
+				if(flagArchivo==1 && flagRaciones==1)
+				{
+					if(controller_saveGalgosFlaquitosAsText("../galgosFlaquitos.csv", pArrayListPerritosFiltrados)!=-1)
+					{
+						printf("Se guardo exitosamente los galgos flaquitos!\n");
+					}
+					else
+					{
+						printf("No se pudo guardar los galgos flaquitos\n");
+					}
+				}
+				else
+				{
+					printf("Primero cargue el archivo de texto y calcule las raciones de comida!\n");
+				}
 				system("pause");
 			break;
 

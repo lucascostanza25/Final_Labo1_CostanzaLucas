@@ -16,4 +16,6 @@ int controller_ordenarPerritos(LinkedList* pArrayListPerritos);
 
 int controller_listPerritoPorciones(LinkedList* pArrayListPerritos);
 
+int controller_saveGalgosFlaquitosAsText(char* path, LinkedList* pArrayListPerritosFiltrados);
+
 #endif /* CONTROLLER_H_ */
