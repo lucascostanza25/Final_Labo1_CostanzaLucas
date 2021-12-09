@@ -14,15 +14,6 @@ sPerritoConHogar* perritoHogar_new()
 	sPerritoConHogar* this=NULL;
 	this=(sPerritoConHogar*)malloc(sizeof(sPerritoConHogar));
 
-	if(this!=NULL)
-	{
-		this->idPerrito=0;
-		strcpy(this->nombrePerrito, " ");
-		this->pesoPerrito=0;
-		this->edadPerrito=0;
-		strcpy(this->razaPerrito, " ");
-		this->idPerrito=0;
-	}
 	return this;
 }
 
@@ -198,7 +189,7 @@ int perritoHogar_getIdHogar(sPerritoConHogar* this, int* idHogar)
 	return retorno;
 }
 
-int perritoHogar_listarUno(sPerritoConHogar* this, sHogar* thisHogar)
+int perritoHogar_listarUno(sPerritoConHogar* thisPerrito, sHogar* thisHogar)
 {
 	int retorno=-1;
 	int auxIdPerrito;
@@ -211,19 +202,19 @@ int perritoHogar_listarUno(sPerritoConHogar* this, sHogar* thisHogar)
 	char auxDireccion[31];
 
 	//Perritos
-	perritoHogar_getId(this, &auxIdPerrito);
-	perritoHogar_getIdHogar(this, &auxIdPerritoHogar);
-	perritoHogar_getNombre(this, auxNombrePerrito);
-	perritoHogar_getRaza(this, auxRazaPerrito);
-	perritoHogar_getPeso(this, &auxPesoPerrito);
-	perritoHogar_getEdad(this, &auxEdadPerrito);
+	perritoHogar_getId(thisPerrito, &auxIdPerrito);
+	perritoHogar_getIdHogar(thisPerrito, &auxIdPerritoHogar);
+	perritoHogar_getNombre(thisPerrito, auxNombrePerrito);
+	perritoHogar_getRaza(thisPerrito, auxRazaPerrito);
+	perritoHogar_getPeso(thisPerrito, &auxPesoPerrito);
+	perritoHogar_getEdad(thisPerrito, &auxEdadPerrito);
 	//Hogar
 	hogar_getId(thisHogar, &auxIdHogar);
 	hogar_getDireccion(thisHogar, auxDireccion);
 
 	if(auxIdPerritoHogar==auxIdHogar)
 	{
-		printf("%-6d %-23s %-6.2f %-6d %-23s %-6d %-23s\n", auxIdPerrito, auxNombrePerrito, auxPesoPerrito, auxEdadPerrito, auxRazaPerrito, auxIdPerritoHogar, auxDireccion);
+		printf("%-6d %-23s %-6.2f %-6d %-23s %-10d %-23s\n", auxIdPerrito, auxNombrePerrito, auxPesoPerrito, auxEdadPerrito, auxRazaPerrito, auxIdPerritoHogar, auxDireccion);
 	}
 
 	return retorno;

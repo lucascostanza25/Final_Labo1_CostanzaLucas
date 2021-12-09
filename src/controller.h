@@ -24,6 +24,8 @@ int controller_loadHogaresFromText(char* path, LinkedList* pArrayListHogares);
 
 int controller_loadPerritosHogaresFromText(char* path, LinkedList* pArrayListPerritosHogares);
 
-int controller_listPerritosConHogares(LinkedList* pArrayListHogares, LinkedList* pArrayListPerritosHogares);
+int controller_listPerritosConHogares(LinkedList* pArrayListPerritosHogares, LinkedList* pArrayListHogares);
+
+int controller_ordenarHogares(LinkedList* pArrayListHogares);
 
 #endif /* CONTROLLER_H_ */

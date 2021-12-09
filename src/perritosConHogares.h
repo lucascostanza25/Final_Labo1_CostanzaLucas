@@ -28,6 +28,6 @@ int perritoHogar_getRaza(sPerritoConHogar* this, char* raza);
 int perritoHogar_setIdHogar(sPerritoConHogar* this, int idHogar);
 int perritoHogar_getIdHogar(sPerritoConHogar* this, int* idHogar);
 
-int perritoHogar_listarUno(sPerritoConHogar* this, sHogar* thisHogar);
+int perritoHogar_listarUno(sPerritoConHogar* thisPerrito, sHogar* thisHogar);
 
 #endif /* PERRITOSCONHOGARES_H_ */

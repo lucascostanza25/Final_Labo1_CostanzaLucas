@@ -79,3 +79,20 @@ int hogar_getDireccion(sHogar* this, char* direccionHogar)
 
 	return retorno;
 }
+
+int hogar_ordenarNombre(void* hogarUno, void* hogarDos)
+{
+	int retorno=-1;
+
+	if(hogarUno!=NULL && hogarDos!=NULL)
+	{
+		char nombreHogarUno[31];
+		char nombreHogarDos[31];
+		hogar_getDireccion(hogarUno, nombreHogarUno);
+		hogar_getDireccion(hogarDos, nombreHogarDos);
+
+		retorno=strcmp(nombreHogarUno, nombreHogarDos);
+	}
+
+	return retorno;
+}

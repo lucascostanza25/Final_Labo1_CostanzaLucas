@@ -20,5 +20,6 @@ int hogar_setId(sHogar* this, int idHogar);
 int hogar_getId(sHogar* this, int* idHogar);
 int hogar_setDireccion(sHogar* this, char* direccionHogar);
 int hogar_getDireccion(sHogar* this, char* direccionHogar);
+int hogar_ordenarNombre(void* hogarUno, void* hogarDos);
 
 #endif /* HOGARES_H_ */

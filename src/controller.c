@@ -142,24 +142,42 @@ int controller_loadPerritosHogaresFromText(char* path, LinkedList* pArrayListPer
 	return retorno;
 }
 
-int controller_listPerritosConHogares(LinkedList* pArrayListHogares, LinkedList* pArrayListPerritosHogares)
+int controller_listPerritosConHogares(LinkedList* pArrayListPerritosHogares, LinkedList* pArrayListHogares)
 {
 	int retorno=-1;
+	int i;
+	int k;
 
-	if(pArrayListHogares!=NULL && pArrayListPerritosHogares!=NULL)
+	if(pArrayListPerritosHogares!=NULL)
 	{
 		sPerritoConHogar* auxPerritoHogar;
 		sHogar* auxHogar;
 
 		printf("%-4s | %-21s | %-4s | %-4s | %-21s | %-4s | %-21s \n", "ID", "NOMBRE", "PESO", "EDAD", "RAZA", "ID HOGAR", "DIRECCION");
 
-		for(int i=0; i<ll_len(pArrayListPerritosHogares); i++)
+		for(i=0; i<ll_len(pArrayListPerritosHogares); i++)
 		{
-			auxPerritoHogar=ll_get(pArrayListPerritosHogares, i);
-			auxHogar=ll_get(pArrayListHogares, i);
-			perritoHogar_listarUno(auxPerritoHogar, auxHogar);
+			for(k=0; k<ll_len(pArrayListHogares); k++)
+			{
+				auxPerritoHogar=ll_get(pArrayListPerritosHogares, i);
+				auxHogar=ll_get(pArrayListHogares, k);
+				perritoHogar_listarUno(auxPerritoHogar, auxHogar);
+			}
 		}
 
+		retorno=0;
+	}
+
+	return retorno;
+}
+
+int controller_ordenarHogares(LinkedList* pArrayListHogares)
+{
+	int retorno=-1;
+
+	if(pArrayListHogares!=NULL)
+	{
+		ll_sort(pArrayListHogares, hogar_ordenarNombre, 0);
 		retorno=0;
 	}
 

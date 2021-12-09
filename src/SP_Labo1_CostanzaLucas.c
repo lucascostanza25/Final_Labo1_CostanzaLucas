@@ -21,6 +21,7 @@ int main(void) {
 	int menu;
 	int flagArchivo=0;
 	int flagRaciones=0;
+	int flagHogares=0;
 	LinkedList* pArrayListPerritos=ll_newLinkedList();
 	LinkedList* pArrayListPerritosFiltrados=NULL;
 	LinkedList* pArrayListPerritosHogares=ll_newLinkedList();
@@ -36,8 +37,9 @@ int main(void) {
 				"5.Filtrar galgos flaquitos\n"
 				"6.Guardar galgos flaquitos (formato texto)\n"
 				"7.Cargar archivos de hogares y perritos con hogares\n"
+				"8.Listar perritos con hogares descendente\n"
 				"0.Salir\n"
-				"\nSeleccione una opcion: ", "Error, opcion incorrecta\n", 0, 8, 4);
+				"\nSeleccione una opcion: ", "Error, opcion incorrecta\n", 0, 10, 4);
 		system("cls");
 		switch(menu)
 		{
@@ -142,12 +144,24 @@ int main(void) {
 				if(controller_loadHogaresFromText("../hogares.csv", pArrayListHogares)!=-1 && controller_loadPerritosHogaresFromText("../perritosConHogar.csv", pArrayListPerritosHogares)!=-1)
 				{
 					printf("Archivos cargados con exito!\n");
+					flagHogares=1;
+				}
+				else
+				{
+					printf("No se pudo cargar los archivos!\n");
 				}
 				system("pause");
 			break;
 
 			case 8:
-				controller_listPerritosConHogares(pArrayListHogares, pArrayListPerritosHogares);
+				if(flagHogares==1)
+				{
+					controller_listPerritosConHogares(pArrayListPerritosHogares, pArrayListHogares);
+				}
+				else
+				{
+					printf("Primero cargue los archivos de hogares y de perritos con hogares en el apartado 7 del menu!\n");
+				}
 				system("pause");
 			break;
 
